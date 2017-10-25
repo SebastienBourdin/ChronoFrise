@@ -2,74 +2,38 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="simpleTimeline.css" />
+                <meta charset="UTF-8">
 		<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 		<script src="resize.js"></script>
 		<script src="simpleTimeline.js"></script>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <link rel="stylesheet" href="style.css" />
 		
-		<style>
-			#timeline {
-				position: relative;
-				margin-top: 350px;
-				max-width: 100%;
-				overflow-x: auto;
-				overflow-y: hidden;
-				border: 1px solid dimgray;
-				box-shadow: 3px 3px 10px 0px rgba(0, 0, 0, 0.75);
-			}
-			
-			#timeline .selected	{
-				font-weight: bold;
-				box-shadow: 0px 0px 3px 1px gray;
-			}
-			
-			#timeline-collapse {
-				top: 355px
-			}
-			
-			.styleA {
-				color: darkgreen;
-				background-color: lightgreen;
-			}
-			
-			.styleB {
-				color: darkred;
-				background-color: mistyrose;
-			}
-			
-			.styleC {
-				color: darkblue;
-				background-color: lightblue;
-			}
-			
-			.timeline-unused-phase {
-				background: repeating-linear-gradient(
-					-45deg,
-					rgba(255,255,255,0.85),
-					rgba(255,255,255,0.85) 10px,
-					rgba(235,235,235,0.85) 10px,
-					rgba(235,235,235,0.85) 20px
-				);
-			}
-			
-			/* NOTE: YOU MIGHT ALSO NEED TO ADAPT THE COLLAPSE/EXPAND TOGGLE POSITIONS IN simpleTimeline.css */
-		</style>
 	</head>
 	<body>		
 		<div id="timeline"></div>
-		
-		<p>Play with the timeline:</p>
+                <br>
+		<p>Actions disponnibles :</p>
 		<ul>
-			<li>Click the items in the timeline. <span id='clicked-item'></span></li>
-			<li><a href="#" onclick="bind_popup()">Attach popup text to selected item</a></li>
-			<li><a href="#" onclick="add_item()">Add an item</a></li>
-			<input type="text" rows="2" cols="20" id="itemName" value="Nom de l'item">
-			<input type="text" rows="2" cols="20" id="startDate" value="Date de début">
-			<input type="text" rows="2" cols="20" id="endDate" value="Date de fin">
-			<input type="text" rows="2" cols="20" id="itemText" value="Text">
-
+			<li>élément sélectionné. <span id='clicked-item'></span></li>
+			<li><a href="#" onclick="bind_popup()">Ajouter une description</a></li>
+			<li><a href="#" onclick="show_add_item()">Ajouter un élément</a></li>
 			<li><a href="#" onclick="remove_selected_item()">Remove selected item</a></li>
 
 		</ul>
+                
+                <div>
+                    <form>
+                        <label class="hidden addItem">Titre</label><input class="hidden addItem" type="text" id="itemName"><br>
+                        <label class="hidden addItem">Année de début</label><input class="hidden addItem" type="text" id="startDate"><br>
+                        <label class="hidden addItem">Année de fin</label><input class="hidden addItem" type="text" id="endDate"><br>
+                        <label class="hidden description">Description</label><input class="hidden description" type="text" id="itemText"><br>
+                        
+                        <a href="#" onclick="add_item()" class="hidden addItem btn btn-success">Ajouter</a>
+                    </form>
+                </div>
 		
 		<script>
 			var timeline;
@@ -124,6 +88,10 @@
 				}					
 			}
 			
+                        function show_add_item() {
+                                $('.addItem').removeClass("hidden");
+			}
+                        
 			function add_item() {
 				var data = timeline.getTimelineData();
 				data.push([
@@ -135,6 +103,7 @@
 					}
 				]);
 				timeline.setTimelineData(data).refreshTimeline();
+                                $('.addItem').addClass("hidden");
 			}
 			
 			function remove_selected_item() {
