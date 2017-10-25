@@ -17,8 +17,9 @@
                 <br>
 		<p>Actions disponnibles :</p>
 		<ul>
-			<li>élément sélectionné. <span id='clicked-item'></span></li>
-			<li><a href="#" onclick="bind_popup()">Ajouter une description</a></li>
+                        
+                    <li class="hidden selectedElem">Élément sélectionné : <span id='clicked-item'></span></li>
+			<li class="hidden selectedElem"><a href="#" onclick="show_add_description()">Ajouter une description</a></li>
 			<li><a href="#" onclick="show_add_item()">Ajouter un élément</a></li>
 			<li><a href="#" onclick="remove_selected_item()">Remove selected item</a></li>
 
@@ -26,12 +27,15 @@
                 
                 <div>
                     <form>
-                        <label class="hidden addItem">Titre</label><input class="hidden addItem" type="text" id="itemName"><br>
-                        <label class="hidden addItem">Année de début</label><input class="hidden addItem" type="text" id="startDate"><br>
-                        <label class="hidden addItem">Année de fin</label><input class="hidden addItem" type="text" id="endDate"><br>
-                        <label class="hidden description">Description</label><input class="hidden description" type="text" id="itemText"><br>
+                        <label class="hidden addItem">Titre</label> <input class="hidden addItem" type="text" id="itemName"><br>
+                        <label class="hidden addItem">Année de début</label> <input class="hidden addItem" type="text" id="startDate"><br>
+                        <label class="hidden addItem">Année de fin</label> <input class="hidden addItem" type="text" id="endDate"><br>
+                        <label class="hidden description">Description</label> <input class="hidden description" type="text" id="itemText"><br>
                         
+                        <a href="#" onclick="bind_popup()" class="hidden description btn btn-success">Ajouter</a>
+                        <a href="#" onclick="hide_add_description()" class="hidden description btn btn-warning">Annuler</a>
                         <a href="#" onclick="add_item()" class="hidden addItem btn btn-success">Ajouter</a>
+                        <a href="#" onclick="hide_add_item()" class="hidden addItem btn btn-warning">Annuler</a>
                     </form>
                 </div>
 		
@@ -84,12 +88,21 @@
 				
 				if(sel.length == 0 || sel.data('id') != clicked_item.data('id')) {
 					clicked_item.addClass('selected');
-					$('#clicked-item').text("You clicked " + clicked_item.data('id'));
+                                        $('.selectedElem').removeClass('hidden');
+					$('#clicked-item').text(" " + clicked_item.data('id'));
 				}					
 			}
-			
+                        function show_add_description() {
+                                $('.description').removeClass("hidden");
+			}
+                        function hide_add_description() {
+                                $('.description').addClass("hidden");
+			}
                         function show_add_item() {
                                 $('.addItem').removeClass("hidden");
+			}
+                        function hide_add_item() {
+                                $('.addItem').addClass("hidden");
 			}
                         
 			function add_item() {
@@ -130,6 +143,7 @@
 				}
 				
 				timeline.bindPopup(sel_item_id, document.getElementById("itemText").value);
+                                hide_add_description();
 			}
 		</script>
 	</body>
