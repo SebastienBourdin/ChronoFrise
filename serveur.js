@@ -53,11 +53,11 @@ fs.readFile('./frise.html', function (err, frise) {
                     html_response = html_response + "</tbody>"
                             + "</table>"
                             + "</html>";
-                   
+
+                    res.writeHead(200, {"Content-Type": "text/html"});
+                    res.write(html_response);
                 });
             });
-            res.writeHead(200, {"Content-Type": "text/html"});
-            res.write(html_response);
         } else if (page == '/frise') {
             res.writeHead(200, {"Content-Type": "text/html"});
             res.write(frise);
