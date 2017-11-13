@@ -3,6 +3,9 @@ var url = require('url');
 var fs = require('fs');
 var ejs = require('ejs');
 var mysql = require('mysql');
+const express = require('express')
+const app = express()
+
 
 fs.readFile('./frise.html', function (err, frise) {
     if (err) {
@@ -33,7 +36,7 @@ fs.readFile('./frise.html', function (err, frise) {
                     if (err)
                         throw err;
                     console.log("Result: " + result);
-                    html_response = ejs.render({url: './view/liste.ejs'},{result:result});
+                    ejs.render({url: './view/liste.ejs'},{result:result});
                     res.writeHead(200, {"Content-Type": "text/html"});
                     res.write(html_response);
                 });

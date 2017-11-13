@@ -15,10 +15,12 @@
             <tr><th>Nom de la frise</th><th>Action</th></tr>
         </thead>
         <tbody>
+            <% frises.forEach(function(frise) { %>
             <tr>
-                <td></td>
+                <td><%=frise.titre%></td>
                 <td></td>
             </tr>
+            <% }); %>
         </tbody>
     </table>
 </html>

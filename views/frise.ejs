@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="simpleTimeline.css" />
+                <meta charset="UTF-8">
+		<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+		<script src="resize.js"></script>
+		<script src="simpleTimeline.js"></script>
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                <link rel="stylesheet" href="style.css" />
+		
+	</head>
+	<body>		
+		<div id="timeline"></div>
+                <br>
+		<p>Actions disponnibles :</p>
+		<ul>
+                        
+                    <li class="hidden selectedElem">Élément sélectionné : <span id='clicked-item'></span></li>
+			<li class="hidden selectedElem"><a href="#" onclick="show_add_description()">Ajouter une description</a></li>
+			<li class="hidden selectedElem"><a href="#" onclick="remove_selected_item()">Supprimer l'élément sélectionné</a></li>
+			<li><a href="#" onclick="show_add_item()">Ajouter un élément</a></li>
+
+		</ul>
+                
+                <div>
+                    <form>
+                        <label class="hidden addItem">Titre</label> <input class="hidden addItem" type="text" id="itemName"><br>
+                        <label class="hidden addItem">Année de début</label> <input class="hidden addItem" type="text" id="startDate"><br>
+                        <label class="hidden addItem">Année de fin</label> <input class="hidden addItem" type="text" id="endDate"><br>
+                        <label class="hidden description">Description</label> <input class="hidden description" type="text" id="itemText"><br>
+                        
+                        <a href="#" onclick="bind_popup()" class="hidden description btn btn-success">Ajouter</a>
+                        <a href="#" onclick="hide_add_description()" class="hidden description btn btn-warning">Annuler</a>
+                        <a href="#" onclick="add_item()" class="hidden addItem btn btn-success">Ajouter</a>
+                        <a href="#" onclick="hide_add_item()" class="hidden addItem btn btn-warning">Annuler</a>
+                    </form>
+                </div>
+		
+		<script>
+			var timeline;
+			$(document).ready(timeline_init);
+			
+			function timeline_init() {
+				var options = {
+					phases: [
+						{ start: -50000, end: -30000, indicatorsEvery: 20000, share: .2 },
+						{ start: -30000, end: -5000, indicatorsEvery: 25000, share: .07, className: 'timeline-unused-phase' },
+						{ start: -5000, end: 4000, indicatorsEvery: 1000, share: .73 }
+					],
+					formatHeader: function (v) {
+						if(v < 0) return -v + ' BC';
+						if(v > 0) return v + ' AD';
+						return 'AD';
+					},					
+					barHeight: 25,
+					fontSize: 16
+				};
+				
+				// note: item 'Lonely' has a popup text attached
+				var data = [
+					[{ id: 'Dingo', start: -50000, end: -32000, className: 'styleA' },
+					 { id: 'Ringo', start: -3000, end: 0, className: 'styleA' }],
+					 
+					[{ id: 'Looong', start: -42000, end: -1492, className: 'styleB' },
+					 { id: 'Hoko', start: -980, end: -332, className: 'styleB' }],
+					
+					[{ id: 'Lonely', start: -3500, end: 733, className: 'styleB', popup_html: 'I am <b>really, really</b> lonely!' }],
+					
+					[{ id: 'Wunz', start: -4700, end: -2000, className: 'styleC' },
+					 { id: 'Inzi', start: -2000, end: -1000, className: 'styleC' },
+					 { id: 'Misi', start: -2000, end: 1500, className: 'styleC' }]
+				];
+				
+				timeline = $('#timeline');
+				timeline.simpleTimeline(options, data);				
+				timeline.on('timeline:barclick', timeline_clicked);
+			}
+				
+			function timeline_clicked(e) {
+				var clicked_item = $(e.target);
+				
+				var sel = $('.selected');
+				sel.removeClass('selected');
+				$('#clicked-item').empty();
+				
+				if(sel.length == 0 || sel.data('id') != clicked_item.data('id')) {
+					clicked_item.addClass('selected');
+                                        $('.selectedElem').removeClass('hidden');
+					$('#clicked-item').text(" " + clicked_item.data('id'));
+				}					
+			}
+                        function show_add_description() {
+                                $('.description').removeClass("hidden");
+			}
+                        function hide_add_description() {
+                                $('.description').addClass("hidden");
+			}
+                        function show_add_item() {
+                                $('.addItem').removeClass("hidden");
+			}
+                        function hide_add_item() {
+                                $('.addItem').addClass("hidden");
+			}
+                        
+			function add_item() {
+				var data = timeline.getTimelineData();
+				data.push([
+					{
+						id: document.getElementById("itemName").value, 
+						start: document.getElementById("startDate").value,
+						end: document.getElementById("endDate").value, 
+						className: 'styleA' 
+					}
+				]);
+				timeline.setTimelineData(data).refreshTimeline();
+                                $('.addItem').addClass("hidden");
+			}
+			
+			function remove_selected_item() {
+				var sel_item_id = $('.selected').data('id');
+				var data = timeline.getTimelineData();
+				for(var l = 0; l < data.length; l++) {
+					for(var i = 0; i < data[l].length; i++) {
+						if(data[l][i].id == sel_item_id) {
+							data[l].splice(i,1);
+							if(data[l].length == 0)
+								data.splice(l,1);
+							timeline.setTimelineData(data).refreshTimeline();
+							return;
+						}
+					}
+				}					
+			}
+			
+			function bind_popup() {
+				var sel_item_id = $('.selected').data('id');
+				if(typeof sel_item_id == 'undefined') {
+					alert('Ain\'t nothin\' selected, yo!');
+					return;
+				}
+				
+				timeline.bindPopup(sel_item_id, document.getElementById("itemText").value);
+                                hide_add_description();
+			}
+		</script>
+	</body>
+</html>
