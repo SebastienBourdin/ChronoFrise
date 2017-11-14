@@ -1,14 +1,15 @@
+<!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="simpleTimeline.css" />
+		<link rel="stylesheet" href="/script/simpleTimeline.css" />
                 <meta charset="UTF-8">
 		<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-		<script src="resize.js"></script>
-		<script src="simpleTimeline.js"></script>
+		<script src="/script/resize.js"></script>
+		<script src="/script/simpleTimeline.js"></script>
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
                 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
                 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-                <link rel="stylesheet" href="style.css" />
+                <link rel="stylesheet" href="/script/style.css" />
 		
 	</head>
 	<body>		
@@ -60,17 +61,9 @@
 				
 				// note: item 'Lonely' has a popup text attached
 				var data = [
-					[{ id: 'Dingo', start: -50000, end: -32000, className: 'styleA' },
-					 { id: 'Ringo', start: -3000, end: 0, className: 'styleA' }],
-					 
-					[{ id: 'Looong', start: -42000, end: -1492, className: 'styleB' },
-					 { id: 'Hoko', start: -980, end: -332, className: 'styleB' }],
-					
-					[{ id: 'Lonely', start: -3500, end: 733, className: 'styleB', popup_html: 'I am <b>really, really</b> lonely!' }],
-					
-					[{ id: 'Wunz', start: -4700, end: -2000, className: 'styleC' },
-					 { id: 'Inzi', start: -2000, end: -1000, className: 'styleC' },
-					 { id: 'Misi', start: -2000, end: 1500, className: 'styleC' }]
+                                    <% elements.forEach(function(elem) { %>
+                                    [{ id: '<%=elem.titre%>', start:<%=elem.datedebut%>, end: <%=elem.datefin%>, className: '<%=elem.classname%>', popup_html: '<%=elem.description%>'}],
+                                    <% }); %>
 				];
 				
 				timeline = $('#timeline');

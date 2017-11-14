@@ -20,6 +20,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/liste', function (req, res) {
+    app.use(express.static(__dirname+'/ressources'));
     con.connect();
     var frises=[];
     con.query("SELECT * FROM frise", function (err, result) {
@@ -33,9 +34,16 @@ app.get('/liste', function (req, res) {
 
 
 app.get('/frise/:id', function (req, res) {
-    console.log(req)
-    app.use('/frise', express.static('ressources'));
-    res.render('frise');    
+    app.use(express.static(__dirname+'/ressources'));
+    con.connect();
+    var elements=[];
+    con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
+    if (err)
+        throw err;
+    elements=result;
+    res.render('frise',{elements});   
+    con.end();
+    });    
 });
 
 
