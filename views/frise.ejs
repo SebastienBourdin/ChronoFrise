@@ -22,7 +22,6 @@
 			<li class="hidden selectedElem"><a href="#" onclick="show_add_description()">Ajouter une description</a></li>
 			<li class="hidden selectedElem"><a href="#" onclick="remove_selected_item()">Supprimer l'élément sélectionné</a></li>
 			<li><a href="#" onclick="show_add_item()">Ajouter un élément</a></li>
-
 		</ul>
                 
                 <div>
@@ -36,6 +35,10 @@
                         <a href="#" onclick="hide_add_description()" class="hidden description btn btn-warning">Annuler</a>
                         <a href="#" onclick="add_item()" class="hidden addItem btn btn-success">Ajouter</a>
                         <a href="#" onclick="hide_add_item()" class="hidden addItem btn btn-warning">Annuler</a>
+                    </form>
+                    <form method="POST">
+                        <input name="data" type="hidden" value="timeline.getTimelineData()">
+                        <input type="submit" value="Sauvegarder la frise">
                     </form>
                 </div>
 		

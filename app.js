@@ -5,6 +5,11 @@ var ejs = require('ejs');
 var mysql = require('mysql');
 const express = require('express')
 const app = express()
+var bodyParser = require('body-parser');
+
+
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 var con = mysql.createConnection({
     host: "localhost",
@@ -35,6 +40,20 @@ app.get('/liste', function (req, res) {
 
 app.get('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
+    con.connect();
+    var elements=[];
+    con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
+    if (err)
+        throw err;
+    elements=result;
+    res.render('frise',{elements});   
+    con.end();
+    });    
+});
+
+app.post('/frise/:id', function (req, res) {
+    app.use(express.static(__dirname+'/ressources'));
+    console.log(req.body.data);
     con.connect();
     var elements=[];
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
