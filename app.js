@@ -22,7 +22,7 @@ app.get('/', function (req, res) {
 app.get('/liste', function (req, res) {
     con.connect();
     var frises=[];
-    con.query("SELECT titre FROM frise", function (err, result) {
+    con.query("SELECT * FROM frise", function (err, result) {
     if (err)
         throw err;
     frises=result;
@@ -32,9 +32,10 @@ app.get('/liste', function (req, res) {
 });
 
 
-app.get('/liste', function (req, res) {
-    
-    
+app.get('/frise/:id', function (req, res) {
+    console.log(req)
+    app.use('/frise', express.static('ressources'));
+    res.render('frise');    
 });
 
 
