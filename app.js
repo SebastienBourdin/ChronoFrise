@@ -50,6 +50,22 @@ app.get('/frise/:id', function (req, res) {
 app.post('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
     console.log(req.body.data);
+    
+    //suppression des anciens éléments
+    con.query("DELETE form element where id_frise='"+req.params.id+"'",function (err, result) {
+    if (err)
+        throw err;
+    });
+    var elements=[req.body.data];
+    //ajout des nouveaux éléments
+    elements.forEach(function(elem){
+       con.query("INSERT into element set id_frise='"+req.params.id+"',titre='"+elem.id+"', datedebut='"+elem.start+"', datefin='"+elem.end+"', classname='"+elem.className+"' ",function (err, result) {
+        if (err)
+            throw err;
+        }); 
+    });
+    
+   //préparation de l'affichage de la frise mise a jour
     var elements=[];
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
