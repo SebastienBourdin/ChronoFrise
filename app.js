@@ -26,42 +26,36 @@ app.get('/', function (req, res) {
 
 app.get('/liste', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
-    con.connect();
     var frises=[];
     con.query("SELECT * FROM frise", function (err, result) {
     if (err)
         throw err;
     frises=result;
     res.render('liste', {frises});
-    con.end();
     });    
 });
 
 
 app.get('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
-    con.connect();
     var elements=[];
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
     elements=result;
     res.render('frise',{elements});   
-    con.end();
     });    
 });
 
 app.post('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
     console.log(req.body.data);
-    con.connect();
     var elements=[];
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
     elements=result;
     res.render('frise',{elements});   
-    con.end();
     });    
 });
 
