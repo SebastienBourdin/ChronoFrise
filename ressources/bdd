@@ -1,0 +1,33 @@
+-- --------------------------------------------------------
+-- Hôte :                        localhost
+-- Version du serveur:           5.7.19 - MySQL Community Server (GPL)
+-- SE du serveur:                Win64
+-- HeidiSQL Version:             9.4.0.5125
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+-- Export de données de la table frise.element : ~5 rows (environ)
+/*!40000 ALTER TABLE `element` DISABLE KEYS */;
+INSERT INTO `element` (`id`, `titre`, `id_frise`, `datedebut`, `datefin`, `description`, `classname`) VALUES
+	(6, 'Dingo', 1, '-50000', '-32000', 'Test', 'styleA'),
+	(7, 'Ringo', 1, '-3000', '0', 'deuxieme test', 'styleA'),
+	(8, 'Looong', 1, '-42000', '-1492', '0', 'styleB'),
+	(9, 'test select bdd', 2, '-45200', '10', 'test', 'styleA'),
+	(10, 'Test bdd 2', 2, '-30000', '1000', 'selection dynamique', 'styleB');
+/*!40000 ALTER TABLE `element` ENABLE KEYS */;
+
+-- Export de données de la table frise.frise : ~2 rows (environ)
+/*!40000 ALTER TABLE `frise` DISABLE KEYS */;
+INSERT INTO `frise` (`id`, `titre`) VALUES
+	(1, 'Frise1'),
+	(2, 'Frise2');
+/*!40000 ALTER TABLE `frise` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
