@@ -11,6 +11,25 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
+
+-- Export de la structure de la base pour frise
+CREATE DATABASE IF NOT EXISTS `frise` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `frise`;
+
+-- Export de la structure de la table frise. element
+CREATE TABLE IF NOT EXISTS `element` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) DEFAULT NULL,
+  `id_frise` int(11) NOT NULL,
+  `datedebut` varchar(50) DEFAULT '0',
+  `datefin` varchar(50) DEFAULT '0',
+  `description` varchar(50) DEFAULT '0',
+  `classname` varchar(50) DEFAULT '0',
+  KEY `id` (`id`),
+  KEY `id_frise` (`id_frise`),
+  CONSTRAINT `id_frise` FOREIGN KEY (`id_frise`) REFERENCES `frise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
 -- Export de données de la table frise.element : ~5 rows (environ)
 /*!40000 ALTER TABLE `element` DISABLE KEYS */;
 INSERT INTO `element` (`id`, `titre`, `id_frise`, `datedebut`, `datefin`, `description`, `classname`) VALUES
@@ -20,6 +39,13 @@ INSERT INTO `element` (`id`, `titre`, `id_frise`, `datedebut`, `datefin`, `descr
 	(9, 'test select bdd', 2, '-45200', '10', 'test', 'styleA'),
 	(10, 'Test bdd 2', 2, '-30000', '1000', 'selection dynamique', 'styleB');
 /*!40000 ALTER TABLE `element` ENABLE KEYS */;
+
+-- Export de la structure de la table frise. frise
+CREATE TABLE IF NOT EXISTS `frise` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) DEFAULT '0',
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Export de données de la table frise.frise : ~2 rows (environ)
 /*!40000 ALTER TABLE `frise` DISABLE KEYS */;
