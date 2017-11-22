@@ -1,5 +1,6 @@
+![logo](https://hal.archives-ouvertes.fr/UNIV-PARIS-SACLAY/public/logo_UP_saclay_final.png)
 
-##Projet Chronofrise.
+Projet Chronofrise.
 
 > L'application ChronoFrise est un outil qui va permettre aux étudiants de
 > musique de créer,visualiser, modifier,de télécharger et exporter une frise
