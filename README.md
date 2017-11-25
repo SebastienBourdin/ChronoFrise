@@ -21,13 +21,6 @@
 
 ----------
 ## Technologies utiliséss
-
- 
-
- - Nodejs [(lien pour l'installation)](https://nodejs.org/en/)
- - Mysql
- - HTML,CSS,BOOTSTRAP## Technologies utilisées
-
  
 
  - Nodejs [(lien pour l'installation)](https://nodejs.org/en/)
