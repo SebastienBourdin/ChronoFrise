@@ -20,11 +20,28 @@
 
 
 ----------
-## Prérequis
+## Technologies utiliséss
 
  
 
  - Nodejs [(lien pour l'installation)](https://nodejs.org/en/)
- - Wamp server
+ - Mysql
+ - HTML,CSS,BOOTSTRAP## Technologies utilisées
+
  
+
+ - Nodejs [(lien pour l'installation)](https://nodejs.org/en/)
+ - Mysql 
+ - HTML,CSS, BOOTSTRAP
+
+
+----------
+## Installation
+
+    git clone https://github.com/SebastienBourdin/ChronoFrise.git
+> Une fois avoir télécharger le projet, se positionner sur le projet et exécuter dans le terminal  la commande suivante:
+
+    node app.js
+   
+> **Attention!** ne pas oublier d'importer la base de données
 
