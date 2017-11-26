@@ -4,10 +4,10 @@
 
 > L'application **ChronoFrise** est un outil qui va permettre aux étudiants de **Musique** de l'**Université d'Evry val d'Essonne** de:
 
->- <i class="icon-file"></i> créer
+> - <i class="icon-file"></i> créer
 > - <i class="icon-trash"></i> supprimer
->- <i class="icon-pencil"></i> modifier
->- <i class="icon-upload"></i> télécharger
+> - <i class="icon-pencil"></i> modifier
+> - <i class="icon-upload"></i> télécharger
 > - <i class="icon-hdd"></i> et exporter en pdf une frise chronologique.
 
 > Cette frise chronologique informatique donne une vue d’ensemble de
@@ -28,7 +28,7 @@
  - Github [(Instructions)](https://git-scm.com/downloads)
 
 ----------
-## **Technologies utilisés**
+## **Technologies utilisées**
  
 
  - Nodejs [(lien pour l'installation)](https://nodejs.org/en/)
@@ -40,7 +40,7 @@
 ## **Installation**
 
     git clone https://github.com/SebastienBourdin/ChronoFrise.git
-> Une fois avoir télécharger le projet, se positionner sur le projet et exécute les  > commandes suivantes :
+> Une fois avoir télécharger le projet, se positionner sur le projet et exécuter les commandes suivantes :
 
  1. Installer les dépendances
  
