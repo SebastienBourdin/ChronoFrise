@@ -25,6 +25,7 @@ app.get('/', function (req, res) {
     res.send('Hello World!');
 });
 
+// Affichage de la liste des Frises disponibles dans la base de données
 app.get('/liste', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
     var frises=[];
@@ -36,7 +37,16 @@ app.get('/liste', function (req, res) {
     });    
 });
 
+// Affichage du formulaire d'ajout de frise
+app.get('/frise/add', function (req, res) {
+    app.use(express.static(__dirname+'/ressources'));
+  
+        
+    res.render('add_frise');   
+ });    
 
+
+//Affichage d'une frise sélectionnée et de ses éléments
 app.get('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
     var elements=[];
@@ -48,6 +58,7 @@ app.get('/frise/:id', function (req, res) {
     });    
 });
 
+// Sauvegarde d'une frise ayant été modifiée
 app.post('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
     var elements=JSON.parse(req.body.data);

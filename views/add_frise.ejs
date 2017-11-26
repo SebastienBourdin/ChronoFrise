@@ -9,25 +9,12 @@
         <link rel='stylesheet' href='/script/style.css' />
     </head>
     <div class="container">
-    <h1>Liste des frises disponnibles</h1>
+    <h1>Créer une nouvelle frise</h1>
     <br>
-        <div class="row">
-            <div class="col-xs-2 pull-right">
-                <a href="/frise/add" class="btn btn-success">+</a>    
-            </div>
-        </div>
-    <table class='table'>
-        <thead>
-            <tr><th>Nom de la frise</th><th>Action</th></tr>
-        </thead>
-        <tbody>
-            <% frises.forEach(function(frise) { %>
-            <tr>
-                <td><%=frise.titre%></td>
-                <td><a href="/frise/<%=frise.id%>">Accéder à la frise</a></td>
-            </tr>
-            <% }); %>
-        </tbody>
-    </table>
+    <form method="POST">
+        
+        <label>Titre de la frise</label><input type="text" name="titre"><br>
+    
+    </form>
     </div>
 </html>
