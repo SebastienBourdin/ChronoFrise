@@ -60,9 +60,9 @@
 						{ start: -5000, end: 4000, indicatorsEvery: 1000, share: .73 }
 					],
 					formatHeader: function (v) {
-						if(v < 0) return -v + ' BC';
-						if(v > 0) return v + ' AD';
-						return 'AD';
+						if(v < 0) return -v + 'AV-JC';
+						if(v > 0) return v + '';
+						return '0';
 					},					
 					barHeight: 25,
 					fontSize: 16

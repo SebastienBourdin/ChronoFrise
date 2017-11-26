@@ -6,6 +6,7 @@ var mysql = require('mysql');
 const express = require('express')
 const app = express()
 var bodyParser = require('body-parser');
+const util = require('util');
 
 
 app.use(bodyParser.json()); // support json encoded bodies
@@ -49,14 +50,15 @@ app.get('/frise/:id', function (req, res) {
 
 app.post('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
-    console.log(req.body.data);
-    
+    var elements=[req.body.data];
+    elements.forEach(function(elem){
+        console.log(util.inspect(elem,false,null)); 
+    });
     //suppression des anciens éléments
-    con.query("DELETE form element where id_frise='"+req.params.id+"'",function (err, result) {
+    con.query("DELETE form element where id_frise="+req.params.id+"",function (err, result) {
     if (err)
         throw err;
     });
-    var elements=[req.body.data];
     //ajout des nouveaux éléments
     elements.forEach(function(elem){
        con.query("INSERT into element set id_frise='"+req.params.id+"',titre='"+elem.id+"', datedebut='"+elem.start+"', datefin='"+elem.end+"', classname='"+elem.className+"' ",function (err, result) {
