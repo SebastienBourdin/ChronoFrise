@@ -50,18 +50,19 @@ app.get('/frise/:id', function (req, res) {
 
 app.post('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
-    var elements=[req.body.data];
-    elements.forEach(function(elem){
-        console.log(util.inspect(elem,false,null)); 
-    });
+    var elements=JSON.parse(req.body.data);
+    
     //suppression des anciens éléments
-    con.query("DELETE form element where id_frise="+req.params.id+"",function (err, result) {
+    con.query("DELETE FROM element WHERE id_frise=?",[req.params.id],function(err, result) {
     if (err)
         throw err;
     });
     //ajout des nouveaux éléments
     elements.forEach(function(elem){
-       con.query("INSERT into element set id_frise='"+req.params.id+"',titre='"+elem.id+"', datedebut='"+elem.start+"', datefin='"+elem.end+"', classname='"+elem.className+"' ",function (err, result) {
+        var descr=elem[0].popup_html=="undefined"?"":"description='"+elem[0].popup_html+"',";
+        var classname=elem[0].className=="undefined"?"styleA":", classname='"+elem[0].className+"'";
+        
+       con.query("INSERT into element set id_frise='"+req.params.id+"',titre='"+elem[0].id+"',"+descr+" datedebut='"+elem[0].start+"', datefin='"+elem[0].end+"'"+classname+"",function (err, result) {
         if (err)
             throw err;
         }); 

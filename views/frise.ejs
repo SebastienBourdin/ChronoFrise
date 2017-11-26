@@ -43,12 +43,12 @@
                 </div>
                 <br><br>
                 <a class="btn btn-info" href="/liste">Retour à la liste des frises</a>
-		<script>
+                <script type="text/javascript">
 			var timeline;
 			$(document).ready(timeline_init);
 			
                         $("#save").submit(function(){
-                         $("#data").val(timeline.getTimelineData());  
+                         $("#data").val(JSON.stringify(timeline.getTimelineData()));  
                         });
                         
                         
