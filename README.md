@@ -23,7 +23,7 @@
  - Thiepthy KANAGASABAI
  
 ----------
-##**Prérequis**
+## **Prérequis**
  - Nodejs [(Lien pour l'installation)](https://nodejs.org/en/)
  - Github [(Instructions)](https://git-scm.com/downloads)
 
