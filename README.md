@@ -2,36 +2,34 @@
 
 ## **Projet Chronofrise.**
 
-> L'application **ChronoFrise** est un outil qui va permettre aux étudiants de **Musique** de l'**Université d'Evry val d'Essonne** de:
+> The appliaca **ChronoFrise** is a too that will allow **Music** students of the  **Unversity of Evry Val d'Essonne** to:
 
-> - <i class="icon-file"></i> créer
-> - <i class="icon-trash"></i> supprimer
-> - <i class="icon-pencil"></i> modifier
-> - <i class="icon-upload"></i> télécharger
-> - <i class="icon-hdd"></i> et exporter en pdf une frise chronologique.
+> - <i class="icon-file"></i> create
+> - <i class="icon-trash"></i> remove
+> - <i class="icon-pencil"></i> edit
+> - <i class="icon-upload"></i> upload
+> - <i class="icon-hdd"></i> and export as PDF a timeline.
 
-> Cette frise chronologique informatique donne une vue d’ensemble de
-> l’évolution de domaines de savoir et processus historiques.
-> Elle permettra notamment de comprendre leurs relations et influences.
-> L’interactivité permettra à l’utilisateur de décider des disciplines
-> (musique, littérature…), et des processus (politiques, économiques…).
+> This computer timeline gives an overview of the evolution of areas of knownledge and historical processes.
+> It will help to understand their  relationships and inflences.
+> Interactivity will allow the user to decide the disciplines (music, literature,...)and processes (political,economic,...).
 
-## **Contributeurs**
+## **Contributors**
 
  - Sebastien BOURDIN
  - Aminata CISSE
  - Thiepthy KANAGASABAI
  
 ----------
-## **Prérequis**
+## **Prerequisitess**
  - Nodejs [(Lien pour l'installation)](https://nodejs.org/en/)
  - Github [(Instructions)](https://git-scm.com/downloads)
 
 ----------
-## **Technologies utilisées**
+## **Technologies useds**
  
 
- - Nodejs [(lien pour l'installation)](https://nodejs.org/en/)
+ - Nodejs [(installation link)](https://nodejs.org/en/)
  - Mysql 
  - HTML,CSS, BOOTSTRAP
 
@@ -40,21 +38,21 @@
 ## **Installation**
 
     git clone https://github.com/SebastienBourdin/ChronoFrise.git
-> Une fois avoir télécharger le projet, se positionner sur le projet et exécuter les commandes suivantes :
+> Once ypu have downloaded the project, position yourself on the project in the terminal and execute the following commands :
 
- 1. Installer les dépendances
+ 1. Instal the dependencies
  
     npm install
     
 
- 2. Lancer le serveur 
+ 2. Launch the server 
  
     node app.js
    
 ----------
-## **Configuration de la base de données dans app.js**
+## **Configuring the database in app.js**
 
-> **Attention!** ne pas oublier d'importer la base de données
+> **Warning!** Do not forget to import the database 
 
        var con = mysql.createConnection({
         host: "localhost",
