@@ -1,8 +1,8 @@
 ![logo](https://hal.archives-ouvertes.fr/UNIV-PARIS-SACLAY/public/logo_UP_saclay_final.png)
 
-## **Projet Chronofrise.**
+## **Chronofrise.**
 
-> The appliacation **ChronoFrise** is a tool that will allow **Music** students of the  **Unversity of Evry Val d'Essonne** to:
+> The application **ChronoFrise** is a tool that will allow **Music** students of the **Unversity of Evry Val d'Essonne** to:
 
 > - <i class="icon-file"></i> create
 > - <i class="icon-trash"></i> remove
@@ -28,7 +28,6 @@
 ----------
 ## **Technologies used**
  
-
  - Nodejs [(Installation link)](https://nodejs.org/en/)
  - Mysql 
  - HTML,CSS, BOOTSTRAP
@@ -41,7 +40,7 @@
 
 > Once you have downloaded the project, position yourself on the project in the terminal and execute the following commands :
 
- 1. Instal the dependencies
+ 1. Install the dependencies
  
     npm install
     
