@@ -8,19 +8,10 @@ td{
         width: 10px;
 }
 
-.table{
-        margin:auto;
-}
-
 #elemselec{
         font-size: large;
         font-weight: bold;
         color: blue;
-}
-
-#itemText{
-    height:100px;
-    width:300px;
 }
 
 .hidden{
