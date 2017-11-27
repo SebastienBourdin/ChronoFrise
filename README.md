@@ -2,7 +2,7 @@
 
 ## **Projet Chronofrise.**
 
-> The appliaca **ChronoFrise** is a too that will allow **Music** students of the  **Unversity of Evry Val d'Essonne** to:
+> The appliacation **ChronoFrise** is a tool that will allow **Music** students of the  **Unversity of Evry Val d'Essonne** to:
 
 > - <i class="icon-file"></i> create
 > - <i class="icon-trash"></i> remove
@@ -21,12 +21,12 @@
  - Thiepthy KANAGASABAI
  
 ----------
-## **Prerequisitess**
+## **Prerequisites**
  - Nodejs [(Lien pour l'installation)](https://nodejs.org/en/)
  - Github [(Instructions)](https://git-scm.com/downloads)
 
 ----------
-## **Technologies useds**
+## **Technologies used**
  
 
  - Nodejs [(installation link)](https://nodejs.org/en/)
@@ -38,6 +38,7 @@
 ## **Installation**
 
     git clone https://github.com/SebastienBourdin/ChronoFrise.git
+
 > Once ypu have downloaded the project, position yourself on the project in the terminal and execute the following commands :
 
  1. Instal the dependencies
