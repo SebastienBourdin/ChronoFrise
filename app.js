@@ -16,7 +16,6 @@ var con = mysql.createConnection({
     host: 'localhost',
 	user: 'root',
 	password : '',
-	port : 8889,
     database: 'frise'
 });
 
@@ -75,11 +74,17 @@ app.get('/frise/:id', function (req, res) {
         throw err;
     frises=result;
     });
+     var frise=null;
+    con.query("SELECT * FROM frise where id='"+req.params.id+"'", function (err, result) {
+    if (err)
+        throw err;
+    frise=result[0];
+    });    
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
     elements=result;
-    res.render('frise',{elements,frises});   
+    res.render('frise',{elements,frises,frise});   
     });    
 });
 
@@ -111,13 +116,18 @@ app.post('/frise/:id', function (req, res) {
         throw err;
     frise=result[0];
     });    
-   
+    var frises=[];
+    con.query("SELECT * FROM frise", function (err, result) {
+    if (err)
+        throw err;
+    frises=result;
+    });
     var elements=[];
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
     elements=result;
-    res.render('frise',{elements,frise});   
+    res.render('frise',{elements,frise,frises});   
     });    
 });
 
