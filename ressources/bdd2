@@ -1,0 +1,73 @@
+-- --------------------------------------------------------
+-- Hôte :                        localhost
+-- Version du serveur:           5.7.19 - MySQL Community Server (GPL)
+-- SE du serveur:                Win64
+-- HeidiSQL Version:             9.4.0.5125
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Export de la structure de la base pour frise
+CREATE DATABASE IF NOT EXISTS `frise` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `frise`;
+
+-- Export de la structure de la table frise. element
+CREATE TABLE IF NOT EXISTS `element` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) DEFAULT NULL,
+  `id_frise` int(11) NOT NULL,
+  `datedebut` varchar(50) DEFAULT '0',
+  `datefin` varchar(50) DEFAULT '0',
+  `description` varchar(50) DEFAULT NULL,
+  `classname` varchar(50) DEFAULT '0',
+  KEY `id` (`id`),
+  KEY `id_frise` (`id_frise`),
+  CONSTRAINT `id_frise` FOREIGN KEY (`id_frise`) REFERENCES `frise` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+
+-- Export de données de la table frise.element : ~13 rows (environ)
+/*!40000 ALTER TABLE `element` DISABLE KEYS */;
+INSERT INTO `element` (`id`, `titre`, `id_frise`, `datedebut`, `datefin`, `description`, `classname`) VALUES
+	(9, 'test select bdd', 2, '-45200', '10', 'test', 'styleA'),
+	(10, 'Test bdd 2', 2, '-30000', '1000', 'selection dynamique', 'styleB'),
+	(67, 'Dingo', 1, '-50000', '-32000', 'Test', 'styleA'),
+	(68, 'Ringo', 1, '-3000', '0', 'deuxieme test', 'styleA'),
+	(69, 'Looong', 1, '-42000', '-1492', '0', 'styleB'),
+	(70, 'test ajout', 1, '0', '2500', 'test', 'styleA'),
+	(71, 'truc', 1, '-1523', '1485', 'test', 'styleA'),
+	(72, 'test ajout2', 1, '0', '1485', 'test', 'styleA'),
+	(73, 'truc2', 1, '0', '1485', NULL, 'styleA'),
+	(74, 'test ajout3', 1, '-30000', '25', 'test descr', 'styleA'),
+	(77, 'test ajout', 3, '0', '1485', NULL, 'styleA'),
+	(78, 'truc2', 3, '-568', '2500', 'undefined', 'styleA'),
+	(79, 'truc', 4, '0', '500', 'undefined', 'styleA');
+/*!40000 ALTER TABLE `element` ENABLE KEYS */;
+
+-- Export de la structure de la table frise. frise
+CREATE TABLE IF NOT EXISTS `frise` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titre` varchar(100) NOT NULL DEFAULT '0',
+  `datecreation` datetime DEFAULT NULL,
+  `datemodification` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+  `datedebut` varchar(50) NOT NULL DEFAULT '-2000',
+  `datefin` varchar(50) NOT NULL DEFAULT '2020',
+  KEY `id` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Export de données de la table frise.frise : ~4 rows (environ)
+/*!40000 ALTER TABLE `frise` DISABLE KEYS */;
+INSERT INTO `frise` (`id`, `titre`, `datecreation`, `datemodification`, `datedebut`, `datefin`) VALUES
+	(1, 'Frise1', NULL, '2017-11-27 15:57:07', '-10000', '8000'),
+	(2, 'Frise2', NULL, '2017-11-27 15:57:16', '-10000', '8000'),
+	(3, 'test ajout frise', '2017-11-27 11:22:34', '2017-11-27 11:22:34', '-1000', '8000'),
+	(4, 'test ajout frise 2', '2017-11-27 11:22:34', '2017-11-27 11:22:34', '-1000', '800');
+/*!40000 ALTER TABLE `frise` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
