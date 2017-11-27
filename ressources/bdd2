@@ -62,8 +62,8 @@ CREATE TABLE IF NOT EXISTS `frise` (
 -- Export de données de la table frise.frise : ~4 rows (environ)
 /*!40000 ALTER TABLE `frise` DISABLE KEYS */;
 INSERT INTO `frise` (`id`, `titre`, `datecreation`, `datemodification`, `datedebut`, `datefin`) VALUES
-	(1, 'Frise1', NULL, '2017-11-27 15:57:07', '-10000', '8000'),
-	(2, 'Frise2', NULL, '2017-11-27 15:57:16', '-10000', '8000'),
+	(1, 'Frise1', '2017-11-27 15:57:07', '2017-11-27 15:57:07', '-10000', '8000'),
+	(2, 'Frise2', '2017-11-27 15:57:07', '2017-11-27 15:57:16', '-10000', '8000'),
 	(3, 'test ajout frise', '2017-11-27 11:22:34', '2017-11-27 11:22:34', '-1000', '8000'),
 	(4, 'test ajout frise 2', '2017-11-27 11:22:34', '2017-11-27 11:22:34', '-1000', '800');
 /*!40000 ALTER TABLE `frise` ENABLE KEYS */;
