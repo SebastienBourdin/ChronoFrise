@@ -28,8 +28,9 @@
 							<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-							    <li><a href="/frise/1">Frise 1</a></li>
-							    <li><a href="/frise/2">Frise 2</a></li>
+							    <% frises.forEach(function(frise) { %>
+							    <li><a href="/frise/<%=frise.id%>"><%=frise.titre%></a></li>
+								<% }); %>
 							</ul>
 						     </li>              
 						 </ul>
@@ -79,7 +80,7 @@
 	 </br>
 	 <div class="row">
             <div class="col-xs-2 pull-right">
-                <a href="/add" class="btn btn-success">+</a>    
+                <a href="/frise/add" class="btn btn-success">+</a>    
             </div>
         </div>
     <table class='table'>
@@ -97,6 +98,6 @@
     </table>
     </body>
     <footer>
-	<p>© 2017<a style="color:#0a93a6; text-decoration:none;" href="#"> Frise chronologique  Université d'evry Paris-Saclay</a>, Tous droits réservés 2016-2017.</p>
+	<p>© 2017<a style="color:#0a93a6; text-decoration:none;" href="#"> Frise chronologique  Université d'evry Paris-Saclay</a>, projet Développement de Logiciel Libre.</p>
  	</footer>
 </html>

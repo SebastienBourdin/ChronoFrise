@@ -49,8 +49,9 @@
 							<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
-							    <li><a href="/frise/1">Frise 1</a></li>
-							    <li><a href="/frise/2">Frise 2</a></li>
+								<% frises.forEach(function(frise) { %>
+							    <li><a href="/frise/<%=frise.id%>"><%=frise.titre%></a></li>
+								<% }); %>
 							</ul>
 						     </li>              
 						 </ul>
@@ -112,23 +113,23 @@
 		</ul>
                 <div> 
                     <form>
-							<table class="table"> 
+							<table class="table1" style="width:500px; height:100px; margin: auto;"> 
 							<tbody>
-							<tr> 
+							<tr class="cacher"> 
                      			<td><label class="hidden addItem">Titre</label></td>
 								<td><input class="hidden addItem" type="text" id="itemName"></td><br>
 							</tr>
-							<tr>
+							<tr class="cacher">
 								<td><label class="hidden addItem">Année de début</label></td>
 								<td> <input class="hidden addItem" type="text" id="startDate"><br></td>
 							</tr>
-							<tr>
+							<tr class="cacher">
 								<td><label class="hidden addItem">Année de fin</label></td>	
 								<td><input class="hidden addItem" type="text" id="endDate"><br></td>
 							</tr>
 							<tr>
 								<td><label class="hidden description">Description</label></td>
-								<td><input class="hidden description" type="text" id="itemText"><br></td>
+								<td><input class="hidden description" type="text" id="itemText"><br></br></td>
 							</tr>
                         </br>
 						</tbody>
@@ -147,24 +148,26 @@
                 </div>
                 <br><br>
                 <a class="btn btn-info" href="/liste">Retour à la liste des frises</a>
-                <script type="text/javascript">
+		<script>
 			var timeline;
 			$(document).ready(timeline_init);
 			
                         $("#save").submit(function(){
-                         $("#data").val(JSON.stringify(timeline.getTimelineData()));  
+                         $("#data").val(timeline.getTimelineData());  
                         });
                         
                         
 			function timeline_init() {
 				var options = {
 					phases: [
-                                             { start: <%=frise.datedebut%>, end: <%=frise.datefin%>, indicatorsEvery: 500, share: 1 }
+						{ start: -50000, end: -30000, indicatorsEvery: 20000, share: .2 },
+						{ start: -30000, end: -5000, indicatorsEvery: 25000, share: .07, className: 'timeline-unused-phase' },
+						{ start: -5000, end: 4000, indicatorsEvery: 1000, share: .73 }
 					],
 					formatHeader: function (v) {
-						if(v < 0) return -v + ' AV-JC';
-						if(v > 0) return v + '';
-						return '0';
+						if(v < 0) return -v + ' BC';
+						if(v > 0) return v + ' AD';
+						return 'AD';
 					},					
 					barHeight: 25,
 					fontSize: 16
@@ -196,12 +199,15 @@
 				}					
 			}
                         function show_add_description() {
+							    $('.cacher').addClass("hidden");
+							    $('.addItem').addClass("hidden");
                                 $('.description').removeClass("hidden");
 			}
                         function hide_add_description() {
                                 $('.description').addClass("hidden");
 			}
                         function show_add_item() {
+								$('.description').addClass("hidden");
                                 $('.addItem').removeClass("hidden");
 			}
                         function hide_add_item() {
@@ -251,6 +257,6 @@
 		</script>
 	</body>
 	<footer>
-	 <p>© 2017 <a style="color:#0a93a6; text-decoration:none;" href="#">Frise chronologique Université d'Evry Paris-Saclay</a>, Tous droits réservés 2016-2017.</p>
+	<p>© 2017<a style="color:#0a93a6; text-decoration:none;" href="#"> Frise chronologique  Université d'evry Paris-Saclay</a>, projet Développement de Logiciel Libre.</p>
  	</footer>
 </html>

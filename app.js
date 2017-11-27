@@ -14,8 +14,9 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 var con = mysql.createConnection({
     host: 'localhost',
-    user: 'root',
-    password : '',
+	user: 'root',
+	password : '',
+	port : 8889,
     database: 'frise'
 });
 
@@ -68,17 +69,17 @@ app.post('/add', function (req, res) {
 app.get('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
     var elements=[];
-    var frise=null;
-    con.query("SELECT * FROM frise where id='"+req.params.id+"'", function (err, result) {
+    var frises=[];
+    con.query("SELECT * FROM frise", function (err, result) {
     if (err)
         throw err;
-    frise=result[0];
-    });    
+    frises=result;
+    });
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
     elements=result;
-    res.render('frise',{elements,frise});   
+    res.render('frise',{elements,frises});   
     });    
 });
 
