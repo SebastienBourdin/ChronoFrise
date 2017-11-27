@@ -14,9 +14,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 var con = mysql.createConnection({
     host: 'localhost',
-	user: 'root',
-	password : '',
-	port : 8889,
+    user: 'root',
+    password : '',
     database: 'frise'
 });
 
@@ -73,7 +72,7 @@ app.get('/frise/:id', function (req, res) {
     con.query("SELECT * FROM frise where id='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
-    frise=result;
+    frise=result[0];
     });    
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
@@ -105,12 +104,19 @@ app.post('/frise/:id', function (req, res) {
     });
     
    //préparation de l'affichage de la frise mise a jour
+    var frise=null;
+    con.query("SELECT * FROM frise where id='"+req.params.id+"'", function (err, result) {
+    if (err)
+        throw err;
+    frise=result[0];
+    });    
+   
     var elements=[];
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
     elements=result;
-    res.render('frise',{elements});   
+    res.render('frise',{elements,frise});   
     });    
 });
 
