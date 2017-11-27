@@ -55,9 +55,7 @@
 			function timeline_init() {
 				var options = {
 					phases: [
-						{ start: -50000, end: -30000, indicatorsEvery: 20000, share: .2 },
-						{ start: -30000, end: -5000, indicatorsEvery: 25000, share: .07, className: 'timeline-unused-phase' },
-						{ start: -5000, end: 4000, indicatorsEvery: 1000, share: .73 }
+                                             { start: <%=frise.datedebut%>, end: <%=frise.datefin%>, indicatorsEvery: 100, share: .2 }
 					],
 					formatHeader: function (v) {
 						if(v < 0) return -v + 'AV-JC';

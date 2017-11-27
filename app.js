@@ -38,11 +38,28 @@ app.get('/liste', function (req, res) {
 });
 
 // Affichage du formulaire d'ajout de frise
-app.get('/frise/add', function (req, res) {
+app.get('/add', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
-  
-        
+            
     res.render('add_frise');   
+ });    
+
+
+// Fonction d'ajout d'un 
+app.post('/add', function (req, res) {
+    app.use(express.static(__dirname+'/ressources'));
+    
+    var titre = req.body.titre;
+    var begindate = req.body.begindate;
+    var endingdate = req.body.endingdate;
+    var date = new Date();
+    con.query("INSERT INTO frise (titre,datedebut,datefin,datecreation,datemodification) VALUES(?,?,?,?,?)",[titre,begindate,endingdate,date,date],function(err, result) {
+    if (err){
+        res.redirect('/add');
+    }   else{
+        res.redirect('/liste');
+    }
+    });
  });    
 
 
@@ -50,11 +67,17 @@ app.get('/frise/add', function (req, res) {
 app.get('/frise/:id', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
     var elements=[];
+    var frise=null;
+    con.query("SELECT * FROM frise where id='"+req.params.id+"'", function (err, result) {
+    if (err)
+        throw err;
+    frise=result;
+    });    
     con.query("SELECT * FROM element where id_frise='"+req.params.id+"'", function (err, result) {
     if (err)
         throw err;
     elements=result;
-    res.render('frise',{elements});   
+    res.render('frise',{elements,frise});   
     });    
 });
 
