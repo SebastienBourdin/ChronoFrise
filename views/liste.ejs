@@ -6,12 +6,78 @@
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
         <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css'>
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-        <link rel='stylesheet' href='/script/style.css' />
+        <link rel='stylesheet' href='/script/style1.css' />
+        <link rel="stylesheet" href="/script/styleconnexion.css">
+        <link rel="stylesheet" href="/script/style.css" />
     </head>
-    <div class="container">
-    <h1>Liste des frises disponnibles</h1>
-    <br>
-        <div class="row">
+    <body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+					<div class="container"> 
+					    <div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						    <span class="icon-bar"></span>
+						    <span class="icon-bar"></span>
+						    <span class="icon-bar"></span> 
+						</button>
+						<a target="_blank" href="#" class="navbar-brand">Frise chronologique</a>
+					    </div>
+					    <div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+						     <li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Mes frises
+							<span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+							    <li><a href="/frise/1">Frise 1</a></li>
+							    <li><a href="/frise/2">Frise 2</a></li>
+							</ul>
+						     </li>              
+						 </ul>
+						<ul class="nav navbar-nav navbar-right">
+						    <li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							    <span class="glyphicon glyphicon-user"></span> 
+							    <strong>Aminata CISSE</strong>
+							    <span class="glyphicon glyphicon-chevron-down"></span>
+							</a>
+							<ul class="dropdown-menu">
+							    <li>
+								<div class="navbar-login">
+								    <div class="row">
+									<div class="col-lg-4">
+									    <p class="text-center">
+										<span class="glyphicon glyphicon-user icon-size"></span>
+									    </p>
+									</div>
+									<div class="col-lg-8">
+									    <p class="text-left"><strong>Aminata CISSE</strong></p>
+									    <p class="text-left small">amidadocisse@univ-evry.fr</p>
+									    
+									</div>
+								    </div>
+								</div>
+							    </li>
+							    <li class="divider"></li>
+							    <li>
+								<div class="navbar-login navbar-login-session">
+								    <div class="row">
+									<div class="col-lg-12">
+									    <p>
+										<a href="/" class="btn btn-danger btn-block">Se deconnecter</a>
+									    </p>
+									</div>
+								    </div>
+								</div>
+							    </li>
+							</ul>
+						    </li>
+						</ul>
+					    </div>
+					</div>
+				    </div>
+    <h1>Liste des frises disponibles</h1>
+	 </br>
+	 <div class="row">
             <div class="col-xs-2 pull-right">
                 <a href="/frise/add" class="btn btn-success">+</a>    
             </div>
@@ -29,5 +95,8 @@
             <% }); %>
         </tbody>
     </table>
-    </div>
+    </body>
+    <footer>
+	<p>© 2017<a style="color:#0a93a6; text-decoration:none;" href="#"> Frise chronologique  Université d'evry Paris-Saclay</a>, Tous droits réservés 2016-2017.</p>
+ 	</footer>
 </html>

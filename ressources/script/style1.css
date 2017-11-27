@@ -1,19 +1,4 @@
 
-h1{
-        color: black;
-}
-
-td{
-        align-content: left;
-        width: 10px;
-}
-
-#elemselec{
-        font-size: large;
-        font-weight: bold;
-        color: blue;
-}
-
 .hidden{
     display:none;    
 }
@@ -22,14 +7,8 @@ td{
     display:default;
 }
 
-body{
-        background:url('fondimage.jpg');
-}
 
 
-li {
-    list-style-type: none;
-}
 
 
 /**  Imported style  **/
@@ -77,43 +56,4 @@ li {
                 rgba(235,235,235,0.85) 10px,
                 rgba(235,235,235,0.85) 20px
         );
-
-
 }
-footer{
-        background-color: #424558;
-         position: fixed;
-         bottom: 0;
-         left: 0;
-         right: 0;
-         height: 35px;
-         text-align: center;
-         color: #CCC;
-     }
-     
-     footer p {
-         padding: 10.5px;
-         margin: 0px;
-         line-height: 100%;
-     }
-
-     .navbar-login
-     {
-         width: 305px;
-         padding: 10px;
-         padding-bottom: 0px;
-     }
-     
-     .navbar-login-session
-     {
-         padding: 10px;
-         padding-bottom: 0px;
-         padding-top: 0px;
-     }
-     
-     .icon-size
-     {
-         font-size: 87px;
-     }
-
-     
