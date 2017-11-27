@@ -22,14 +22,14 @@
  
 ----------
 ## **Prerequisites**
- - Nodejs [(Lien pour l'installation)](https://nodejs.org/en/)
+ - Nodejs [(Installation link)](https://nodejs.org/en/)
  - Github [(Instructions)](https://git-scm.com/downloads)
 
 ----------
 ## **Technologies used**
  
 
- - Nodejs [(installation link)](https://nodejs.org/en/)
+ - Nodejs [(Installation link)](https://nodejs.org/en/)
  - Mysql 
  - HTML,CSS, BOOTSTRAP
 
@@ -39,7 +39,7 @@
 
     git clone https://github.com/SebastienBourdin/ChronoFrise.git
 
-> Once ypu have downloaded the project, position yourself on the project in the terminal and execute the following commands :
+> Once you have downloaded the project, position yourself on the project in the terminal and execute the following commands :
 
  1. Instal the dependencies
  
