@@ -13,16 +13,18 @@ app.use(bodyParser.json()); // support json encoded bodies
 app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 var con = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "",
-    database: "frise"
+    host: 'localhost',
+	user: 'root',
+	password : '',
+	port : 8889,
+    database: 'frise'
 });
 
 app.set('view engine', 'ejs');
 
 app.get('/', function (req, res) {
-    res.send('Hello World!');
+     app.use(express.static(__dirname+'/ressources'));
+      res.render('connexion');
 });
 
 // Affichage de la liste des Frises disponibles dans la base de données
