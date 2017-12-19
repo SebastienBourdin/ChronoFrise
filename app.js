@@ -41,8 +41,13 @@ app.get('/liste', function (req, res) {
 // Affichage du formulaire d'ajout de frise
 app.get('/add', function (req, res) {
     app.use(express.static(__dirname+'/ressources'));
-            
-    res.render('add_frise');   
+    var frises=[];
+    con.query("SELECT * FROM frise", function (err, result) {
+    if (err)
+        throw err;
+    frises=result;
+    });
+    res.render('add_frise',{frises});   
  });    
 
 
